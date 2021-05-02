@@ -25,3 +25,8 @@ The main focus is the use of microservices. However, to make it more clear of ho
 ## Tolls to be used
 
 NodeJS, Express, TypeScript, Redis, MongoDB, React, NextJS, Kubernetes.
+
+## Instructions
+
+> > docker build -t mcksiq/auth ./auth/
+> > skaffold dev
