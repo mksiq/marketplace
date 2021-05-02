@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: mcksiq/auth
+          image: us.gcr.io/marketplace-dev-312517/auth
 ---
 apiVersion: v1
 kind: Service
