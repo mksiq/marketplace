@@ -28,5 +28,6 @@ NodeJS, Express, TypeScript, Redis, MongoDB, React, NextJS, Kubernetes.
 
 ## Instructions
 
-> > docker build -t mcksiq/auth ./auth/
-> > skaffold dev
+> docker build -t mcksiq/auth ./auth/
+
+> skaffold dev

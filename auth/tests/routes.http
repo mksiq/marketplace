@@ -1,0 +1,9 @@
+# GET https://marketplace.dev/api/users/currentuser
+
+POST marketplace.dev/api/users/signup
+Content-Type: application/json
+
+{
+  "email": "maickel@gmail.com",
+  "password": "12345"
+}
