@@ -4,6 +4,6 @@ POST marketplace.dev/api/users/signup
 Content-Type: application/json
 
 {
-  "email": "maickel@gmail.com",
+  "email": "maicke@aaaa.aa",
   "password": "12345"
 }

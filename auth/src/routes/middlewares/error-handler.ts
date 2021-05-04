@@ -13,8 +13,7 @@ export const errorHandler = (
     return res
       .status(error.statusCode)
       .send({ errors: [error.serializeErrors()] });
-  } else {
   }
 
-  return res.status(503).send({ errors: [error.message] });
+  return res.status(500).send({ errors: [error.message] });
 };
