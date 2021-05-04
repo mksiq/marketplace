@@ -4,12 +4,13 @@ metadata:
   name: marketplace
 build:
   artifacts:
-  - image: us.gcr.io/marketplace-dev-312517/auth
-    context: auth
-    docker:
-      dockerfile: Dockerfile
+    - image: us.gcr.io/marketplace-dev-312517/auth
+      context: auth
+      docker:
+        dockerfile: Dockerfile
 deploy:
   kubectl:
     manifests:
-    - infra/k8s/auth-depl.yaml
-    - infra/k8s/ingress-srv.yaml
+      - infra/k8s/auth-depl.yaml
+      - infra/k8s/ingress-srv.yaml
+      - infra/k8s/auth-mongo-depl.yaml

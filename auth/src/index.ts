@@ -6,6 +6,7 @@ import { errorHandler } from './routes/middlewares/error-handler';
 import { signinRouter } from './routes/signin';
 import { signoutRouter } from './routes/signout';
 import { signupRouter } from './routes/signup';
+import mongoose from 'mongoose';
 
 const app = express();
 app.use(json());
@@ -27,6 +28,20 @@ app.get('*', () => {
 
 app.use(errorHandler);
 
-app.listen(3000, () => {
-  console.log('Listening on 3000.');
-});
+const init = async () => {
+  try {
+    await mongoose.connect('mongodb://auth-mongo-srv:27017/auth', {
+      useCreateIndex: true,
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+  } catch (error) {
+    console.error(error);
+  }
+
+  app.listen(3000, () => {
+    console.log('Listening on 3000.');
+  });
+};
+
+init();
