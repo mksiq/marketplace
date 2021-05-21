@@ -1,10 +1,10 @@
 import express from 'express';
-import { body, validationResult } from 'express-validator';
+import { body } from 'express-validator';
 import jwt from 'jsonwebtoken';
 
 import { BadRequestError } from '../errors/bad-request-error';
-import { RequestValidationError } from '../errors/request-validation-error';
 import { User } from '../models/user';
+import { validateRequest } from './middlewares/validate-request';
 
 const router = express.Router();
 
@@ -17,13 +17,8 @@ router.post(
       .isLength({ min: 5, max: 40 })
       .withMessage('Please provide a password with at least 5 chars and at most 40 chars'),
   ],
+  validateRequest,
   async (req: express.Request, res: express.Response) => {
-    const errors = validationResult(req);
-
-    if (!errors.isEmpty()) {
-      throw new RequestValidationError(errors.array());
-    }
-
     const { email, password } = req.body;
 
     const existingUser = await User.findOne({ email });
@@ -43,9 +38,6 @@ router.post(
       },
       process.env.JWT_KEY! // ! mark forces typescript to not care about the possible undefined, it was defined on init function in index.js
     );
-
-    console.log(userJwt);
-
     // Store on session JWT
     req.session = {
       jwt: userJwt,

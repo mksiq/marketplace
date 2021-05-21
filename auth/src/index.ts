@@ -27,17 +27,13 @@ app.use(signinRouter);
 app.use(signoutRouter);
 app.use(signupRouter);
 
-app.all('*', async (req, res) => {
-  throw new NotFoundError();
-});
-
 app.get('/', (req, res) => {
   res.json({
     message: 'Auth Service listening for requests',
   });
 });
 
-app.get('*', () => {
+app.all('*', async (req, res) => {
   throw new NotFoundError();
 });
 
