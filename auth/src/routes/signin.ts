@@ -39,8 +39,6 @@ router.post(
       process.env.JWT_KEY! // ! mark forces typescript to not care about the possible undefined, it was defined on init function in index.js
     );
 
-    console.log(userJwt);
-
     // Store on session JWT
     req.session = {
       jwt: userJwt,
