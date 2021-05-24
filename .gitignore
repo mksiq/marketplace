@@ -2,3 +2,4 @@
 *.swp
 .vscode
 notes.txt
+client/.next
