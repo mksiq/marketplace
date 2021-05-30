@@ -1,6 +1,23 @@
 # GET https://marketplace.dev/api/users/currentuser
 
-POST marketplace.dev/api/users/signup
+# POST marketplace.dev/api/users/signup
+# Content-Type: application/json
+
+# {
+#   "email": "maicke@aaaa.aa",
+#   "password": "12345"
+# }
+
+POST marketplace.dev/api/users/signin
+Content-Type: application/json
+
+{
+  "email": "maicke@aaaa.aa",
+  "password": "12345"
+}
+
+
+POST marketplace.dev/api/users/current
 Content-Type: application/json
 
 {

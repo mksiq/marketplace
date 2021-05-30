@@ -24,7 +24,7 @@ The main focus is the use of microservices. However, to make it more clear of ho
 
 ## Tolls to be used
 
-NodeJS, Express, TypeScript, Redis, MongoDB, React, NextJS, Kubernetes.
+NodeJS, Express, TypeScript, Redis, MongoDB, React, NextJS, tailwindcss, Kubernetes.
 
 ## Instructions
 

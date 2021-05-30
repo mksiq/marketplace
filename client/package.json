@@ -19,6 +19,7 @@
   "homepage": "https://github.com/mksiq/marketplace/tree/main#readme",
   "dependencies": {
     "@types/react": "^17.0.6",
+    "axios": "^0.21.1",
     "next": "^10.2.2",
     "postcss-preset-env": "^6.7.0",
     "react": "^17.0.2",
