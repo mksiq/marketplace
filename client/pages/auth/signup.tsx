@@ -8,32 +8,20 @@ const SignUp = () => {
   const [errors, setErrors] = useState([]);
   const onSubmit = async (event) => {
     event.preventDefault();
-
     try {
       const response = await axios.post('/api/users/signup', {
         email,
         password,
       });
-
-      console.log(response.data);
     } catch (err) {
       setErrors(err.response.data.errors);
       const errors = err.response.data.errors[0];
       setErrors(errors);
       // console.log(errors);
-      console.log(errors ? 'YES. THERE ARE ERRORS' : 'NOERRRORS');
-      {
-        errors.map((err) => {
-          console.log('AFFF');
-          // console.log(err);
-          return <li key={err.message}>{err.message}</li>;
-        });
-      }
     }
   };
 
   useEffect(() => {
-    console.log('use effect called');
     const err = errors;
     setErrors(err);
   }, [errors]);
@@ -84,19 +72,17 @@ const SignUp = () => {
             </div>
           </div>
           {errors.length > 0 && (
-            <div className="alert alert-danger">
-              <h4>Ooops....</h4>
-              <ul className="my-0">
+            <div className="text-center">
+              <h4>Something went wrong</h4>
+              <ul>
                 {errors?.[0].map((err, index) => (
-                  <li key={index}>{err.message}</li>
+                  <li className="container px-5 py-2 my-2 bg-red-200 rounded-md" key={index}>
+                    {err.message}
+                  </li>
                 ))}
               </ul>
             </div>
           )}
-          {console.log(errors)}
-          {console.log('inside comp')}
-          {console.log(errors[0]?.[0])}
-          {console.log(errors[0]?.[0]?.message)}
           <div>
             <button
               type="submit"
