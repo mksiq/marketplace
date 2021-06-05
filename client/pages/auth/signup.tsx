@@ -18,17 +18,7 @@ const SignUp = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const response = await axios.post('/api/users/signup', {
-        email,
-        password,
-      });
-    } catch (err) {
-      // setErrors(err.response.data.errors);
-      // const errors = err.response.data.errors[0];
-      // setErrors(errors);
-      // // console.log(errors);
-    }
+    doRequest();
   };
 
   return (
