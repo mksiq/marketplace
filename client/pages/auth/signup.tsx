@@ -1,11 +1,21 @@
 import { useEffect, useState } from 'react';
 
 import axios from 'axios';
+import useRequest from '../../hooks/use-request';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errors, setErrors] = useState([]);
+  // const [errors, setErrors] = useState([]);
+  const { doRequest, errors } = useRequest({
+    url: '/api/users/signup',
+    method: 'post',
+    body: {
+      email,
+      password,
+    },
+  });
+
   const onSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -14,17 +24,12 @@ const SignUp = () => {
         password,
       });
     } catch (err) {
-      setErrors(err.response.data.errors);
-      const errors = err.response.data.errors[0];
-      setErrors(errors);
-      // console.log(errors);
+      // setErrors(err.response.data.errors);
+      // const errors = err.response.data.errors[0];
+      // setErrors(errors);
+      // // console.log(errors);
     }
   };
-
-  useEffect(() => {
-    const err = errors;
-    setErrors(err);
-  }, [errors]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -71,18 +76,10 @@ const SignUp = () => {
               />
             </div>
           </div>
-          {errors.length > 0 && (
-            <div className="text-center">
-              <h4>Something went wrong</h4>
-              <ul>
-                {errors?.[0].map((err, index) => (
-                  <li className="container px-5 py-2 my-2 bg-red-200 rounded-md" key={index}>
-                    {err.message}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+          {/* {errors.length > 0 && (
+            useRequest
+          )} */}
+          {errors}
           <div>
             <button
               type="submit"
