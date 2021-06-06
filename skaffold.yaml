@@ -4,7 +4,8 @@ metadata:
   name: marketplace
 build:
   artifacts:
-    - image: us.gcr.io/marketplace-dev-312517/auth
+    # - image: us.gcr.io/marketplace-dev-312517/auth
+    - image: mcksiq/auth
       context: auth
       docker:
         dockerfile: Dockerfile
@@ -12,7 +13,8 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: us.gcr.io/marketplace-dev-312517/client
+    # - image: us.gcr.io/marketplace-dev-312517/client
+    - image: mcksiq/client
       context: client
       docker:
         dockerfile: Dockerfile

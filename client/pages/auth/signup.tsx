@@ -1,12 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-import axios from 'axios';
+import Router from 'next/router';
 import useRequest from '../../hooks/use-request';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const [errors, setErrors] = useState([]);
   const { doRequest, errors } = useRequest({
     url: '/api/users/signup',
     method: 'post',
@@ -14,18 +13,24 @@ const SignUp = () => {
       email,
       password,
     },
+    onSuccess: () => {
+      console.log('inside do request');
+      return Router.push('/');
+    },
   });
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    doRequest();
+    console.log(email, password);
+    console.log('called do request');
+    await doRequest();
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign up to a new account</h2>
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign up to a New Account</h2>
         </div>
         <form className="mt-8 space-y-6" onSubmit={onSubmit}>
           <input type="hidden" name="remember" defaultValue="true" />
@@ -66,9 +71,6 @@ const SignUp = () => {
               />
             </div>
           </div>
-          {/* {errors.length > 0 && (
-            useRequest
-          )} */}
           {errors}
           <div>
             <button
